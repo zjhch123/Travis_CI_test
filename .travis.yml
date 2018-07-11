@@ -13,4 +13,4 @@ before_install:
 install:
 - npm install
 after_success:
-- ssh root@139.129.132.196 StrictHostKeyChecking=no 'cd /var/www/static/travis/ && sh deploy.sh'
+- ssh root@139.129.132.196 StrictHostKeyChecking=no 'cd /var/www/static/travis/ && git pull && sh ./deploy.sh'
