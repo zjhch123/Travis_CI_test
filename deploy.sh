@@ -1,3 +1,3 @@
-git pull origin master
+source /etc/profile
 npm install
 npm run build
