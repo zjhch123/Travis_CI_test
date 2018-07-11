@@ -1,14 +1,17 @@
 language: node_js
 node_js: 8.5
 sudo: required
+addons:
+  ssh_known_hosts: 139.129.132.196
 cache:
   directories:
   - node_modules
+before_install:
+- openssl aes-256-cbc -K $encrypted_07c9fc84947a_key -iv $encrypted_07c9fc84947a_iv
+  -in id_rsa.enc -out ~/.ssh/id_rsa -d
+- chmod 600 ~/.ssh/id_rsa
 install:
 - npm install
 after_success:
 - ssh root@139.129.132.196 StrictHostKeyChecking=no 'cd /var/www/static/travis/ &&
   git pull && npm install && npm run build'
-before_install:
-- openssl aes-256-cbc -K $encrypted_07c9fc84947a_key -iv $encrypted_07c9fc84947a_iv
-  -in id_rsa.enc -out ~\/.ssh/id_rsa -d
