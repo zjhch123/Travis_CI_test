@@ -1,3 +1,3 @@
 source /etc/profile
-npm install
-npm run build
+sudo npm install
+sudo npm run build
